@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+    "name": "match-devtools",
+    "description": "",
+    "version": "0.1",
+    "browser_action": {
+        "default_icon": {
+            "19": "images/back.jpg",
+            "38": "images/back.jpg"
+        },
+        "default_title": "match devtools",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "tabs",
+        "activeTab",
+        "notifications",
+        "storage",
+        "http://*/*",
+        "https://*/*",
+        "file:///*"
+    ],
+    "background": {
+        "scripts": ["js/background.js"]
+    },
+    "devtools_page": "devtools-background.html"
+}
