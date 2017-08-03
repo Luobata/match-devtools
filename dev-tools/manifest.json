@@ -9,7 +9,7 @@
             "38": "images/back.jpg"
         },
         "default_title": "match devtools",
-        "default_popup": "popup.html"
+        "default_popup": "pop.html"
     },
     "permissions": [
         "tabs",
@@ -20,8 +20,15 @@
         "https://*/*",
         "file:///*"
     ],
+    "devtools_page": "devtools-background.html",
+    "options_page": "options.html",
+    "web_accessible_resources": [
+        "devtools.html",
+        "devtools-background.html",
+        "build/backend.js"
+    ],
     "background": {
-        "scripts": ["js/background.js"]
-    },
-    "devtools_page": "devtools-background.html"
+        "scripts": ["build/background.js"],
+        "persistent": false
+    }
 }
