@@ -10,7 +10,7 @@ var bubleOptions = {
 module.exports = {
     entry: {
         // hook: './src/hook.js',
-        // devtools: './src/devtools.js',
+         devtools: './src/devtools.js',
          background: './src/background.js',
         'devtools-background': './src/devtools-background.js'
         // backend: './src/backend.js',
@@ -23,7 +23,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            src: path.resolve(__dirname, './src')
+            SRC: path.resolve(__dirname, '../src'),
+            COMPONENTS: path.resolve(__dirname, '../src/components'),
+            LIB: path.resolve(__dirname, '../src/lib')
         }
     },
     module: {
