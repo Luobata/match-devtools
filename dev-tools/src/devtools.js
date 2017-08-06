@@ -21,6 +21,7 @@ initDevTools({
                     port.onMessage.addListener(fn);
                 },
                 send (data) {
+                    console.log(port);
                     port.postMessage(data);
                 }
             });

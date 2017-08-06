@@ -31,59 +31,59 @@
 <script>
 import ComponentsTab from './components/matchTab/matchTab.vue'
 export default {
-  name: 'app',
-  data () {
-    return {
-        message: 'match',
-        tab: 'match',
-        isDark: typeof chrome !== 'undefined' &&
-        typeof chrome.devtools !== 'undefined' &&
-        chrome.devtools.panels.themeName === 'dark'
-    }
-  },
-  components: {
-      match: ComponentsTab
-  },
-  //computed: mapState({
-  //  message: state => state.message,
-  //  tab: state => state.tab,
-  //  newEventCount: state => state.events.newEventCount
-  //}),
-  methods: {
-    switchTab (tab) {
-      bridge.send('switch-tab', tab)
-      this.$store.commit('SWITCH_TAB', tab)
-      if (tab === 'events') {
-        this.$store.commit('events/RESET_NEW_EVENT_COUNT')
-      }
+    name: 'app',
+    data () {
+        return {
+            message: 'match',
+            tab: 'match',
+            isDark: typeof chrome !== 'undefined' &&
+            typeof chrome.devtools !== 'undefined' &&
+            chrome.devtools.panels.themeName === 'dark'
+        }
     },
-    refresh () {
-      const refreshIcon = this.$refs.refresh
-      refreshIcon.style.animation = 'none'
-      bridge.send('refresh')
-      bridge.once('flush', () => {
-        refreshIcon.style.animation = 'rotate 1s'
-      })
+    components: {
+        match: ComponentsTab
     },
-    updateActiveBar () {
-      const activeButton = this.$el.querySelector('.button.active');
-      const activeBar = this.$el.querySelector('.active-bar');
-      activeBar.style.left = activeButton.offsetLeft + 'px';
-      activeBar.style.width = activeButton.offsetWidth + 'px';
+    //computed: mapState({
+        //  message: state => state.message,
+        //  tab: state => state.tab,
+        //  newEventCount: state => state.events.newEventCount
+    //}),
+    methods: {
+        switchTab (tab) {
+            MATCHBRIDGE.send('switch-tab', tab)
+            this.$store.commit('SWITCH_TAB', tab)
+            if (tab === 'events') {
+                this.$store.commit('events/RESET_NEW_EVENT_COUNT')
+            }
+        },
+        refresh () {
+            const refreshIcon = this.$refs.refresh;
+            refreshIcon.style.animation = 'none';
+            MATCHBRIDGE.send('refresh');
+            MATCHBRIDGE.once('flush', () => {
+                refreshIcon.style.animation = 'rotate 1s'
+            })
+        },
+        updateActiveBar () {
+            const activeButton = this.$el.querySelector('.button.active');
+            const activeBar = this.$el.querySelector('.active-bar');
+            activeBar.style.left = activeButton.offsetLeft + 'px';
+            activeBar.style.width = activeButton.offsetWidth + 'px';
+        }
+    },
+    mounted () {
+        this.updateActiveBar()
+        window.addEventListener('resize', this.updateActiveBar)
+    },
+    destroyed () {
+        window.removeEventListener('resize', this.updateActiveBar)
+    },
+    watch: {
+        tab () {
+            this.$nextTick(this.updateActiveBar)
+        }
     }
-  },
-  mounted () {
-    this.updateActiveBar()
-    window.addEventListener('resize', this.updateActiveBar)
-  },
-  destroyed () {
-    window.removeEventListener('resize', this.updateActiveBar)
-  },
-  watch: {
-    tab () {
-      this.$nextTick(this.updateActiveBar)
-    }
-  }
 }
 </script>
 
