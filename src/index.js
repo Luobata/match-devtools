@@ -2,12 +2,17 @@ import Vue from 'vue';
 import App from './App.vue';
 
 
-export function initDevTools () {
-    initUi();
+export function initDevTools (shell) {
+    initUi(shell);
 };
 
-function initUi () {
+function initUi (shell) {
     let app = null;
+
+    shell.connect(bridge => {
+        window.MATCHBRIDGE = bridge;
+    });
+
     app = new Vue({
         render (h) {
             return h(App);

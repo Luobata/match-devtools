@@ -10,7 +10,7 @@
       </transition>
     </span>
     <a class="button components"
-      :class="{ active: tab === 'components'}"
+      :class="{ active: tab === 'match'}"
       @click="switchTab('components')"
       title="Switch to Components">
       <i class="material-icons">device_hub</i>
@@ -24,30 +24,31 @@
     </a>
     <span class="active-bar"></span>
   </div>
-  <component :is="tab" class="container"></component>
+  <match :is="tab" class="container"></match>
 </div>
 </template>
 
 <script>
 import ComponentsTab from './components/matchTab/matchTab.vue'
-import { mapState } from 'vuex'
 export default {
   name: 'app',
   data () {
     return {
-      isDark: typeof chrome !== 'undefined' &&
+        message: 'match',
+        tab: 'match',
+        isDark: typeof chrome !== 'undefined' &&
         typeof chrome.devtools !== 'undefined' &&
         chrome.devtools.panels.themeName === 'dark'
     }
   },
   components: {
-    components: ComponentsTab
+      match: ComponentsTab
   },
-  computed: mapState({
-    message: state => state.message,
-    tab: state => state.tab,
-    newEventCount: state => state.events.newEventCount
-  }),
+  //computed: mapState({
+  //  message: state => state.message,
+  //  tab: state => state.tab,
+  //  newEventCount: state => state.events.newEventCount
+  //}),
   methods: {
     switchTab (tab) {
       bridge.send('switch-tab', tab)
@@ -65,10 +66,10 @@ export default {
       })
     },
     updateActiveBar () {
-      const activeButton = this.$el.querySelector('.button.active')
-      const activeBar = this.$el.querySelector('.active-bar')
-      activeBar.style.left = activeButton.offsetLeft + 'px'
-      activeBar.style.width = activeButton.offsetWidth + 'px'
+      const activeButton = this.$el.querySelector('.button.active');
+      const activeBar = this.$el.querySelector('.active-bar');
+      activeBar.style.left = activeButton.offsetLeft + 'px';
+      activeBar.style.width = activeButton.offsetWidth + 'px';
     }
   },
   mounted () {
