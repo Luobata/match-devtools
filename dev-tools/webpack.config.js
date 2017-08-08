@@ -9,7 +9,7 @@ var bubleOptions = {
 
 module.exports = {
     entry: {
-        // hook: './src/hook.js',
+         hook: './src/injectHook.js',
          devtools: './src/devtools.js',
          background: './src/background.js',
         'devtools-background': './src/devtools-background.js',
