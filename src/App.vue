@@ -24,12 +24,13 @@
     </a>
     <span class="active-bar"></span>
   </div>
-  <match :is="tab" class="container"></match>
+  <match class="container"></match>
 </div>
 </template>
 
 <script>
 import ComponentsTab from './components/matchTab/matchTab.vue'
+import ComponentsContent from './components/matchContent/matchContent.vue'
 export default {
     name: 'app',
     data () {
@@ -42,7 +43,7 @@ export default {
         }
     },
     components: {
-        match: ComponentsTab
+        match: ComponentsContent
     },
     //computed: mapState({
         //  message: state => state.message,

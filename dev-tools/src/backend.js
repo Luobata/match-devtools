@@ -1,6 +1,6 @@
 // this is injected to the app page when the panel is activated.
 
-//import { initBackend } from 'src/backend'
+import { initBackend } from 'SRC/backend';
 import Bridge from 'SRC/bridge';
 
 window.addEventListener('message', handshake);
@@ -35,6 +35,6 @@ function handshake (e) {
             listeners = []
         })
 
-        //initBackend(bridge);
+        initBackend(bridge);
     }
 }
