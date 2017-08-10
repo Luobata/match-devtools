@@ -11,7 +11,6 @@
     </span>
     <a class="button components"
       :class="{ active: tab === 'match'}"
-      @click="switchTab('components')"
       title="Switch to Components">
       <i class="material-icons">device_hub</i>
       <span class="pane-name">Components</span>
@@ -29,8 +28,9 @@
 </template>
 
 <script>
-import ComponentsTab from './components/matchTab/matchTab.vue'
-import ComponentsContent from './components/matchContent/matchContent.vue'
+import ComponentsTab from 'COMPONENTS/matchTab/matchTab.vue'
+import ComponentsContent from 'COMPONENTS/matchContent/matchContent.vue'
+
 export default {
     name: 'app',
     data () {
@@ -51,13 +51,6 @@ export default {
         //  newEventCount: state => state.events.newEventCount
     //}),
     methods: {
-        switchTab (tab) {
-            MATCHBRIDGE.send('switch-tab', tab)
-            this.$store.commit('SWITCH_TAB', tab)
-            if (tab === 'events') {
-                this.$store.commit('events/RESET_NEW_EVENT_COUNT')
-            }
-        },
         refresh () {
             const refreshIcon = this.$refs.refresh;
             refreshIcon.style.animation = 'none';
