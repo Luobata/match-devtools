@@ -2,28 +2,27 @@
 
 <template>
 <div id="app" :class="{ app: true, dark: isDark }">
-  <div class="header">
-    <img class="logo" src="./assets/logo.png" alt="Vue">
-    <span class="message-container">
-      <transition name="slide-up">
-        <span class="message" :key="message">{{ message }}</span>
-      </transition>
-    </span>
-    <a class="button components"
-      :class="{ active: tab === 'match'}"
-      title="Switch to Components">
-      <i class="material-icons">device_hub</i>
-      <span class="pane-name">Components</span>
-    </a>
-    <a class="button refresh"
-      @click="refresh"
-      title="Force Refresh">
-      <i class="material-icons" ref="refresh">refresh</i>
-      <span class="pane-name">Refresh</span>
-    </a>
-    <span class="active-bar"></span>
-  </div>
-  <match class="container"></match>
+    <div class="header">
+        <span class="message-container">
+            <transition name="slide-up">
+                <span class="message" :key="message">{{ message }}</span>
+            </transition>
+        </span>
+        <a class="button components"
+            :class="{ active: tab === 'match'}"
+            title="Switch to Components">
+            <i class="material-icons">device_hub</i>
+            <span class="pane-name">Components</span>
+        </a>
+        <a class="button refresh"
+            @click="refresh"
+            title="Force Refresh">
+            <i class="material-icons" ref="refresh">refresh</i>
+            <span class="pane-name">Refresh</span>
+        </a>
+        <span class="active-bar"></span>
+    </div>
+    <match class="container"></match>
 </div>
 </template>
 
@@ -72,11 +71,6 @@ export default {
     },
     destroyed () {
         window.removeEventListener('resize', this.updateActiveBar)
-    },
-    watch: {
-        tab () {
-            this.$nextTick(this.updateActiveBar)
-        }
     }
 }
 </script>
@@ -103,10 +97,6 @@ export default {
   position relative
   .app.dark &
     border-bottom 1px solid $dark-border-color
-.logo
-  width 30px
-  height 30px
-  margin 0 15px
 .message-container
   height 1em
   cursor default

@@ -5,7 +5,11 @@ import matchObj from 'COMPONENTS/matchObj/matchObj.vue';
 export default {
     data () {
         return {
-            matchArr: []
+        }
+    },
+    computed: {
+        matchArr () {
+            return this.$store.state.matches;
         }
     },
     components: {
@@ -14,24 +18,6 @@ export default {
         SplitPane
     },
     beforeMount () {
-        this.matchArr = window.MATCH_STACK;
-        this.matchArr = [
-            {
-                beforeParams: {
-                    id: 1,
-                    pid: {
-                        id:1
-                    }
-                },
-                afterParams: {
-                    pid: 2,
-                    data: {
-                        type: 1,
-                        id: 'sdf'
-                    }
-                }
-            }
-        ];
         console.log(this.matchArr);
     },
     methods: {

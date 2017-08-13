@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import App from './App.vue';
+import store from './store';
 
 
 export function initDevTools (shell) {
@@ -14,6 +15,7 @@ function initUi (shell) {
     });
 
     app = new Vue({
+        store,
         render (h) {
             return h(App);
         }
