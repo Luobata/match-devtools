@@ -149,7 +149,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "../variables"
+@import "../../variables"
 
 .data-field
   user-select text

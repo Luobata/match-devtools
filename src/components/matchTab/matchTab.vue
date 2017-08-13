@@ -6,7 +6,6 @@
             <input placeholder="Filter components" @input="filterStacks">
           </div>
         </action-header>
-        <div v-for="item in matchArr">1</div>
     </div>
 </template>
 
