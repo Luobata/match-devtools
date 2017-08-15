@@ -53,6 +53,8 @@ export default {
         refresh () {
             const refreshIcon = this.$refs.refresh;
             refreshIcon.style.animation = 'none';
+            MATCHBRIDGE.send('flush');
+            return;
             MATCHBRIDGE.send('refresh');
             MATCHBRIDGE.once('flush', () => {
                 refreshIcon.style.animation = 'rotate 1s'

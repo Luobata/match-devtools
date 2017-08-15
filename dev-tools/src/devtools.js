@@ -15,6 +15,11 @@ initDevTools({
             const port = chrome.runtime.connect({
                 name: '' + chrome.devtools.inspectedWindow.tabId
             });
+            let disconnected = false;
+            port.onDisconnect.addListener(() => {
+                console.log(11);
+                disconnected = true
+            });
 
             const bridge = new Bridge({
                 listen (fn) {
@@ -22,7 +27,9 @@ initDevTools({
                 },
                 send (data) {
                     console.log(port);
-                    port.postMessage(data);
+                    if (!disconnected) {
+                        port.postMessage(data);
+                    }
                 }
             });
 

@@ -25,6 +25,11 @@ const store = new Vuex.Store({
                 }
             }
         ]
+    },
+    mutations: {
+        flush (state) {
+            console.log(window.MATCH_STACK);
+        }
     }
 });
 

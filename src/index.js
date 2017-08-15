@@ -12,6 +12,10 @@ function initUi (shell) {
 
     shell.connect(bridge => {
         window.MATCHBRIDGE = bridge;
+
+        bridge.on('flush', function () {
+            store.commit('flush');
+        });
     });
 
     app = new Vue({
