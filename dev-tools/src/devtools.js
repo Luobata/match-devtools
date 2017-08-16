@@ -17,7 +17,7 @@ initDevTools({
             });
             let disconnected = false;
             port.onDisconnect.addListener(() => {
-                console.log(11);
+                console.log('disconnected');
                 disconnected = true
             });
 
@@ -26,7 +26,7 @@ initDevTools({
                     port.onMessage.addListener(fn);
                 },
                 send (data) {
-                    console.log(port);
+                    console.log(data);
                     if (!disconnected) {
                         port.postMessage(data);
                     }

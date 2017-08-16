@@ -4,9 +4,14 @@
 
 const hook = window.__MATCH_DEVTOOLS_GLOBAL_HOOK__;
 
-export function initBackend () {
+export function initBackend (bridge) {
     hook.on('flush', (stack) => {
         flush(stack);
+    });
+    bridge.on('flush', function (data) {
+        console.log(data);
+        console.log(window.MATCH_STACK);
+        console.log('flush!!');
     });
 };
 

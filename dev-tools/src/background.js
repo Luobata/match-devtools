@@ -36,8 +36,9 @@ function installProxy (tabId) {
   chrome.tabs.executeScript(tabId, {
     file: '/build/proxy.js'
   }, function (res) {
+        debugger;
     if (!res) {
-      ports[tabId].devtools.postMessage('proxy-fail')
+        ports[tabId].devtools.postMessage('proxy-fail')
     } else {
       console.log('injected proxy to tab ' + tabId)
     }

@@ -53,12 +53,13 @@ export default {
         refresh () {
             const refreshIcon = this.$refs.refresh;
             refreshIcon.style.animation = 'none';
+            MATCHBRIDGE.once('flush', () => {
+                console.log(1);
+                refreshIcon.style.animation = 'rotate 1s'
+            })
             MATCHBRIDGE.send('flush');
             return;
             MATCHBRIDGE.send('refresh');
-            MATCHBRIDGE.once('flush', () => {
-                refreshIcon.style.animation = 'rotate 1s'
-            })
         },
         updateActiveBar () {
             const activeButton = this.$el.querySelector('.button.active');

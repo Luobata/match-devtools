@@ -33,7 +33,7 @@ function handshake (e) {
                 window.removeEventListener('message', l)
             })
             listeners = []
-        })
+        });
 
         initBackend(bridge);
     }

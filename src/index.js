@@ -14,14 +14,15 @@ function initUi (shell) {
         window.MATCHBRIDGE = bridge;
 
         bridge.on('flush', function () {
+            console.log(1);
             store.commit('flush');
         });
-    });
 
-    app = new Vue({
-        store,
-        render (h) {
-            return h(App);
-        }
-    }).$mount('#app');
+        app = new Vue({
+            store,
+            render (h) {
+                return h(App);
+            }
+        }).$mount('#app');
+    });
 };
