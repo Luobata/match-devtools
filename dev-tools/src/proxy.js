@@ -21,6 +21,7 @@ function sendMessageToBackend (payload) {
 }
 
 function sendMessageToDevtools (e) {
+    console.log(e);
   if (e.data && e.data.source === 'match-devtools-backend') {
     port.postMessage(e.data.payload)
   }

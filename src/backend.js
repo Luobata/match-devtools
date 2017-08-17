@@ -13,6 +13,7 @@ export function initBackend (bridge) {
         console.log(data);
         console.log(window.MATCH_STACK);
         console.log('flush!!');
+        bridge.send('flush');
     });
 };
 
