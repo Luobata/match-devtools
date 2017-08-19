@@ -13,7 +13,6 @@ const store = new Vuex.Store({
     },
     mutations: {
         flush (state, data) {
-            console.log(data);
             state.matches = data;
         }
     }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <split-pane>
-            <component-tree slot="left"></component-tree>
+            <match-filter slot="left"></match-filter>
             <match-obj :stacks="matchArr" slot="right"></match-obj>
         </split-pane>
   </div>

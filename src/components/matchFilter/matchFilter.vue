@@ -1,10 +1,10 @@
 <template>
     <div class="match">
         <action-header slot="header">
-          <div class="search">
-            <i class="material-icons">search</i>
-            <input placeholder="Filter components" @input="filterStacks">
-          </div>
+            <div class="search">
+                <i class="material-icons">search</i>
+                <input placeholder="Filter components" @input="filterStacks">
+            </div>
         </action-header>
     </div>
 </template>

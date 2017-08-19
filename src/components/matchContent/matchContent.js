@@ -1,5 +1,5 @@
 import SplitPane from '../splitPane/splitPane.vue';
-import ComponentTree from '../matchTab/matchTab.vue';
+import matchFilter from '../matchFilter/matchFilter.vue';
 import matchObj from 'COMPONENTS/matchObj/matchObj.vue';
 
 export default {
@@ -13,7 +13,7 @@ export default {
         }
     },
     components: {
-        ComponentTree,
+        matchFilter,
         matchObj,
         SplitPane
     },

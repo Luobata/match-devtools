@@ -30,9 +30,9 @@ function handshake (e) {
 
         bridge.on('shutdown', () => {
             listeners.forEach(l => {
-                window.removeEventListener('message', l)
+                window.removeEventListener('message', l);
             })
-            listeners = []
+            listeners = [];
         });
 
         initBackend(bridge);

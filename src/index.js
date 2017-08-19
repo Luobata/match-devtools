@@ -14,7 +14,6 @@ function initUi (shell) {
         window.MATCHBRIDGE = bridge;
 
         bridge.on('flush', function (data) {
-            console.log(data);
             store.commit('flush', data);
         });
 

@@ -18,7 +18,7 @@ initDevTools({
             let disconnected = false;
             port.onDisconnect.addListener(() => {
                 console.log('disconnected');
-                disconnected = true
+                disconnected = true;
             });
 
             const bridge = new Bridge({

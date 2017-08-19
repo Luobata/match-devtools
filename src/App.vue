@@ -27,8 +27,7 @@
 </template>
 
 <script>
-import ComponentsTab from 'COMPONENTS/matchTab/matchTab.vue'
-import ComponentsContent from 'COMPONENTS/matchContent/matchContent.vue'
+import ComponentsContent from 'COMPONENTS/matchContent/matchContent.vue';
 
 export default {
     name: 'app',
@@ -44,11 +43,6 @@ export default {
     components: {
         match: ComponentsContent
     },
-    //computed: mapState({
-        //  message: state => state.message,
-        //  tab: state => state.tab,
-        //  newEventCount: state => state.events.newEventCount
-    //}),
     methods: {
         refresh () {
             const refreshIcon = this.$refs.refresh;
@@ -57,8 +51,6 @@ export default {
                 refreshIcon.style.animation = 'rotate 1s'
             })
             MATCHBRIDGE.send('flush');
-            return;
-            MATCHBRIDGE.send('refresh');
         },
         updateActiveBar () {
             const activeButton = this.$el.querySelector('.button.active');
