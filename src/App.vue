@@ -12,7 +12,7 @@
             :class="{ active: tab === 'match'}"
             title="Switch to Components">
             <i class="material-icons">device_hub</i>
-            <span class="pane-name">Components</span>
+            <span class="pane-name">Proxy</span>
         </a>
         <a class="button refresh"
             @click="refresh"
@@ -33,7 +33,7 @@ export default {
     name: 'app',
     data () {
         return {
-            message: 'match',
+            message: 'lib-match',
             tab: 'match',
             isDark: typeof chrome !== 'undefined' &&
             typeof chrome.devtools !== 'undefined' &&
@@ -93,6 +93,7 @@ export default {
   .app.dark &
     border-bottom 1px solid $dark-border-color
 .message-container
+    padding 0 0 0 20px;
   height 1em
   cursor default
 .message
