@@ -14,7 +14,7 @@ function handshake (e) {
             listen (fn) {
                 var listener = evt => {
                     if (evt.data.source === 'match-devtools-proxy' && evt.data.payload) {
-                        fn(evt.data.payload)
+                        fn(evt.data.payload);
                     }
                 }
                 window.addEventListener('message', listener);
@@ -24,7 +24,7 @@ function handshake (e) {
                 window.postMessage({
                     source: 'match-devtools-backend',
                     payload: data
-                }, '*')
+                }, '*');
             }
         });
 

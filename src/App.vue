@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import ComponentsContent from 'COMPONENTS/matchContent/matchContent.vue';
+import matchContent from 'COMPONENTS/matchContent/matchContent.vue';
 
 export default {
     name: 'app',
@@ -41,15 +41,16 @@ export default {
         }
     },
     components: {
-        match: ComponentsContent
+        match: matchContent 
     },
     methods: {
         refresh () {
             const refreshIcon = this.$refs.refresh;
             refreshIcon.style.animation = 'none';
+            // flush按钮旋转
             MATCHBRIDGE.once('flush', () => {
                 refreshIcon.style.animation = 'rotate 1s'
-            })
+            });
             MATCHBRIDGE.send('flush');
         },
         updateActiveBar () {
@@ -60,11 +61,11 @@ export default {
         }
     },
     mounted () {
-        this.updateActiveBar()
-        window.addEventListener('resize', this.updateActiveBar)
+        this.updateActiveBar();
+        window.addEventListener('resize', this.updateActiveBar);
     },
     destroyed () {
-        window.removeEventListener('resize', this.updateActiveBar)
+        window.removeEventListener('resize', this.updateActiveBar);
     }
 }
 </script>

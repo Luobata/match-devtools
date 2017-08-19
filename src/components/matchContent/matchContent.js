@@ -3,13 +3,9 @@ import matchFilter from '../matchFilter/matchFilter.vue';
 import matchObj from 'COMPONENTS/matchObj/matchObj.vue';
 
 export default {
-    data () {
-        return {
-        }
-    },
     computed: {
         matchArr () {
-            return this.$store.state.matches;
+            return this.$store.state.showMatch;
         }
     },
     components: {

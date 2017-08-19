@@ -9,11 +9,16 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         matches: [
+        ],
+        showMatch: [
         ]
     },
     mutations: {
         flush (state, data) {
             state.matches = data;
+        },
+        chooseItem (state, item) {
+            state.showMatch = [item];
         }
     }
 });
