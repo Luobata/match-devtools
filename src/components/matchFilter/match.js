@@ -9,7 +9,18 @@ export default {
     },
     computed: {
         matchArr () {
-            return this.$store.state.matches;
+            let matches = this.$store.state.matches.slice();
+            if (this.filterKey === '') return matches;
+
+            for (let i = 0; i < matches.length;) {
+                if (matches[i].url.indexOf(this.filterKey) === -1) {
+                    matches.splice(i, 1);
+                } else {
+                    i++;
+                }
+            }
+
+            return matches;
         }
     },
     components: {
