@@ -10,13 +10,10 @@ export function initBackend (bridge) {
         flush(stack);
     });
     bridge.on('flush', function (data) {
-        console.log(data);
-        console.log(window.MATCH_STACK);
-        console.log('flush!!');
-        bridge.send('flush');
+        bridge.send('flush', window.MATCH_STACK);
     });
 };
 
-function flush () {
+function flush (stack) {
     console.log(stack);
 }

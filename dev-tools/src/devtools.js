@@ -26,7 +26,6 @@ initDevTools({
                     port.onMessage.addListener(fn);
                 },
                 send (data) {
-                    console.log(data);
                     if (!disconnected) {
                         port.postMessage(data);
                     }

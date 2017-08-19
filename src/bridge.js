@@ -11,14 +11,13 @@ export default class Bridge extends EventEmitter {
     self.setMaxListeners(Infinity);
     self.wall = wall;
     wall.listen(message => {
-        console.log(message);
         if (typeof message === 'string') {
             self.emit(message)
         } else {
             self.emit(message.event, message.payload)
         }
     });
-  }
+  };
 
   /**
    * Send an event.
@@ -31,7 +30,7 @@ export default class Bridge extends EventEmitter {
       this.wall.send({
           event,
           payload
-      })
+      });
   };
 
   /**
@@ -41,6 +40,6 @@ export default class Bridge extends EventEmitter {
    */
 
   log (message) {
-    this.send('log', message)
+      this.send('log', message)
   };
 };

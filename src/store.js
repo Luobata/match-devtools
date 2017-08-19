@@ -9,26 +9,12 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         matches: [
-            {
-                beforeParams: {
-                    id: 1,
-                    pid: {
-                        id:1
-                    }
-                },
-                afterParams: {
-                    pid: 2,
-                    data: {
-                        type: 1,
-                        id: 'sdf'
-                    }
-                }
-            }
         ]
     },
     mutations: {
-        flush (state) {
-            console.log(window.MATCH_STACK);
+        flush (state, data) {
+            console.log(data);
+            state.matches = data;
         }
     }
 });

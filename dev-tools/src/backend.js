@@ -13,7 +13,6 @@ function handshake (e) {
         const bridge = new Bridge({
             listen (fn) {
                 var listener = evt => {
-                    console.log(evt);
                     if (evt.data.source === 'match-devtools-proxy' && evt.data.payload) {
                         fn(evt.data.payload)
                     }

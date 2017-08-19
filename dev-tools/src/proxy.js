@@ -7,28 +7,27 @@ const port = chrome.runtime.connect({
   name: 'content-script'
 })
 
-port.onMessage.addListener(sendMessageToBackend)
-window.addEventListener('message', sendMessageToDevtools)
-port.onDisconnect.addListener(handleDisconnect)
+port.onMessage.addListener(sendMessageToBackend);
+window.addEventListener('message', sendMessageToDevtools);
+port.onDisconnect.addListener(handleDisconnect);
 
-sendMessageToBackend('init')
+sendMessageToBackend('init');
 
 function sendMessageToBackend (payload) {
   window.postMessage({
-    source: 'match-devtools-proxy',
-    payload: payload
-  }, '*')
+      source: 'match-devtools-proxy',
+      payload: payload
+  }, '*');
 }
 
 function sendMessageToDevtools (e) {
-    console.log(e);
-  if (e.data && e.data.source === 'match-devtools-backend') {
-    port.postMessage(e.data.payload)
-  }
+    if (e.data && e.data.source === 'match-devtools-backend') {
+        port.postMessage(e.data.payload);
+    }
 }
 
 function handleDisconnect () {
-  window.removeEventListener('message', sendMessageToDevtools)
-  sendMessageToBackend('shutdown')
+    window.removeEventListener('message', sendMessageToDevtools);
+    sendMessageToBackend('shutdown');
 }
 
